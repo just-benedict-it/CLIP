@@ -285,7 +285,8 @@ class CLIP(nn.Module):
                  vocab_size: int,
                  transformer_width: int,
                  transformer_heads: int,
-                 transformer_layers: int
+                 transformer_layers: int,
+                 dropout: float = 0.1
                  ):
         super().__init__()
 
@@ -315,7 +316,8 @@ class CLIP(nn.Module):
             width=transformer_width,
             layers=transformer_layers,
             heads=transformer_heads,
-            attn_mask=self.build_attention_mask()
+            attn_mask=self.build_attention_mask(),
+            dropout=dropout
         )
 
         self.vocab_size = vocab_size
